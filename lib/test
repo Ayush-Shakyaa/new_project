@@ -1,0 +1,156 @@
+// import 'package:flutter/material.dart';
+
+// import 'model/todo.dart';
+
+// class CheckboxExample extends StatefulWidget {
+//   @override
+//   _CheckboxExampleState createState() => _CheckboxExampleState();
+// }
+
+// class _CheckboxExampleState extends State<CheckboxExample> {
+//   List<bool> isCheckedList = [];
+//   final List<Todo> _todos =<Todo>[];
+//   // Todo hello = Todo(name: name, completed: completed)
+
+//   @override
+//   Widget build(BuildContext context) {
+//     int checkedCount = isCheckedList.where((isChecked) => isChecked).length;
+
+//     TextEditingController _textFieldController = TextEditingController();
+//     void _addTodoItem(String name){
+//       setState(() {
+//        _todos.add(Todo(name:name , completed: false));
+//       });
+//     }   
+//     void _deleteCheckbox(Todo todo) {
+//       setState(() {
+//        _todos.removeWhere((element) => element.name == todo.name);
+//       });
+//     }
+//      void onTodoChange(Todo todo) {
+//   setState(() {
+//     todo.completed = !todo.completed;
+//   });
+//      }
+//     Future<void> _displayDialog() async {
+//     return showDialog<void>(
+//       context: context,
+//       barrierDismissible: false,
+//       builder: (BuildContext context) {
+//         return AlertDialog(
+//           title: const Text('Add a todo'),
+//           content: TextFormField(
+//             controller: _textFieldController,
+//             decoration: const InputDecoration(hintText: 'Type your todo'),
+//             autofocus: true,
+//           ),
+//           actions: <Widget>[
+//             OutlinedButton(
+//               style: OutlinedButton.styleFrom(
+//                 shape: RoundedRectangleBorder(
+//                   borderRadius: BorderRadius.circular(12),
+//                 ),
+//               ),
+//               onPressed: () {
+//                 Navigator.of(context).pop();
+//               },
+//               child: const Text('Cancel'),
+//             ),
+//             ElevatedButton(
+//               style: ElevatedButton.styleFrom(
+//                 shape: RoundedRectangleBorder(
+//                   borderRadius: BorderRadius.circular(12),
+//                 ),
+//               ),
+//               onPressed: () {
+//                 // print(testName);
+//                 _addTodoItem(_textFieldController.text);
+//                 Navigator.of(context).pop();
+//               },
+//               child: const Text('Add'),
+//             ),
+//           ],
+//         );
+//       },
+//     );   
+//   }
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('TODO MANAGER'),
+//       ),
+//       body: ListView(
+//         padding: const EdgeInsets.symmetric(vertical: 8.0),
+//         children: _todos.map((Todo todo){
+//           return ListTile(
+//             title: Text('Input'),
+//             trailing: IconButton(
+//               icon: Icon(Icons.delete),
+// 	       color: Colors.red,
+//               onPressed: () {
+//                 _deleteCheckbox(todo);
+//               },
+//             ),
+//             leading: Checkbox(
+//               value: todo.completed,
+//               onChanged: (bool? newValue) {
+//                 setState(() {
+//                   onChanged: (value)
+//                   {
+//                     onTodoChange(todo);
+//                   };
+//                 });
+//               },
+//             ),
+//           );
+//         }).toList(),
+//       ),
+//       floatingActionButton: Padding(
+//         padding: const EdgeInsets.only(bottom: 16.0),
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.end,
+//           children: [
+//             FloatingActionButton.extended(
+//               onPressed: () {
+//                 setState(() {
+//                   // isCheckedList.add(false);
+//                   _displayDialog();
+//                 });
+//               },
+//               label: Text('Add a ToDo'),
+//               icon: Icon(Icons.add),
+//             ),
+//             SizedBox(height: 16),
+//             FloatingActionButton.extended(
+//               onPressed: () {
+//                 showDialog(
+//                   context: context,
+//                   builder: (BuildContext context) {
+//                     return AlertDialog(
+//                       title: Text('Todo List'),
+//                       content: Text('Checked checkboxes: $checkedCount'),
+//                       actions: [
+//                         TextButton(
+//                           child: Text('Close'),
+//                           onPressed: () {
+//                             Navigator.of(context).pop();
+//                           },
+//                         ),
+//                       ],
+//                     );
+//                   },
+//                 );
+//               },
+//               label: Text('Show Count'),
+//               icon: Icon(Icons.check),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+// void main() {
+//   runApp(MaterialApp(
+//     home: CheckboxExample(),
+//   ));
+// }
